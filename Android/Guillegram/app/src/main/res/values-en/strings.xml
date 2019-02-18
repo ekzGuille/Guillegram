@@ -1,7 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Guillegram</string>
     <string name="title_activity_ref">RefActivity</string>
-    <string name="hint_username">Nombre de usuario</string>
-    <string name="hint_password">Contraseña</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
     <string name="txt_btn_login">Login</string>
 </resources>
