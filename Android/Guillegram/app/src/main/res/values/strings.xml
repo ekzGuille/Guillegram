@@ -6,7 +6,7 @@
     <string name="hint_password">Contraseña</string>
     <string name="txt_btn_login">Login</string>
     <string name="dont_have_account">¿No tienes cuenta?,</string>
-    <string name="create_here">crear aquí</string>
+    <string name="create_here"><u>crear aquí</u></string>
     <string name="hint_email">Correo</string>
     <string name="hint_name">Nombre</string>
     <string name="hint_user">Usuario</string>
@@ -20,4 +20,8 @@
     <string name="tab_search">Buscar</string>
     <string name="tab_home">Home</string>
     <string name="tab_profile">Perfil</string>
+    <string name="title_activity_test">test</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

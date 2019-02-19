@@ -6,7 +6,7 @@
     <string name="hint_password">Password</string>
     <string name="txt_btn_login">Login</string>
     <string name="dont_have_account">Don\'t have account?,</string>
-    <string name="create_here">create here</string>
+    <string name="create_here"><u>create here</u></string>
     <string name="hint_email">Email</string>
     <string name="hint_name">Name</string>
     <string name="hint_user">User</string>

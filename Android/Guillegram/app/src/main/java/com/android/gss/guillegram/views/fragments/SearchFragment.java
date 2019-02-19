@@ -12,10 +12,10 @@ import com.android.gss.guillegram.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SeaerchFragment extends Fragment {
+public class SearchFragment extends Fragment {
 
 
-    public SeaerchFragment() {
+    public SearchFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class SeaerchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_seaerch, container, false);
+        return inflater.inflate(R.layout.fragment_search, container, false);
     }
 
 }
