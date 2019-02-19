@@ -1,17 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cardview="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/pictureCard"
+    android:id="@+id/cardCardview"
     android:layout_width="match_parent"
     android:layout_height="@dimen/heigth_cardview"
-    cardview:cardCornerRadius="@dimen/corner_radios_cardview">
+    cardview:cardCornerRadius="@dimen/corner_radius_cardview">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-<ImageView
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/heigth_cardview"
-    android:scaleType="centerCrop"/>
+
+        <ImageView
+            android:id="@+id/pictureCard"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/heigth_cardview"
+            android:background="@drawable/foto"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/background_textcard"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/vertical_activity_margin"
+            android:paddingBottom="@dimen/vertical_activity_margin">
+
+            <TextView
+                android:id="@+id/userNameCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/textsize_username_card"
+                android:text="@string/username_example"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/firstWord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/firstword_card"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/firstword_textsize_card" />
+
+                <TextView
+                    android:id="@+id/timeCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/timecard_marginlefet_card"
+                    android:text="@string/timecard_card"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/firstword_textsize_card" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/like_margintop_card"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/likeCheckCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkbox_selector" />
+
+                <TextView
+                    android:id="@+id/likeNumberCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/timecard_marginlefet_card"
+                    android:text="@string/likenumber_card"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/firstword_textsize_card" />
+
+            </LinearLayout>
+
+        </LinearLayout>
     </FrameLayout>
 </android.support.v7.widget.CardView>

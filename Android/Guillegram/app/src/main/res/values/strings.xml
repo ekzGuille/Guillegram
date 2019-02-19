@@ -13,4 +13,11 @@
     <string name="hint_confirm_password">Confirmar contraseña</string>
     <string name="txt_btn_joinUs">Únete</string>
     <string name="toolbar_title_createAccount">Crear cuenta</string>
+    <string name="username_example">Guillejemplo</string>
+    <string name="firstword_card">Hace</string>
+    <string name="timecard_card">4 días</string>
+    <string name="likenumber_card">Me gusta</string>
+    <string name="tab_search">Buscar</string>
+    <string name="tab_home">Home</string>
+    <string name="tab_profile">Perfil</string>
 </resources>

@@ -94,7 +94,8 @@
                         android:text="@string/create_here"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/textSize_dont_hace_account"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:onClick="goContainerActivity"/>
 
                 </RelativeLayout>
             </LinearLayout>

@@ -15,10 +15,10 @@ public class CreateAccountActivity extends AppCompatActivity {
         showToolbar(getResources().getString(R.string.toolbar_title_createAccount),true );
     }
 
-    public void showToolbar(String titulo, boolean btnRegreso){
+    public void showToolbar(String title, boolean btnUp){
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getActionBar().setTitle(titulo);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(btnRegreso);
+        getActionBar().setTitle(title);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(btnUp);
     }
 }

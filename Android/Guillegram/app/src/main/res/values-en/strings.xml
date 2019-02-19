@@ -13,4 +13,11 @@
     <string name="hint_confirm_password">Confirm password</string>
     <string name="txt_btn_joinUs">Join us</string>
     <string name="toolbar_title_createAccount">Crate account</string>
+    <string name="username_example">Guillejemplo</string>
+    <string name="firstword_card">Ago</string>
+    <string name="timecard_card">4 days</string>
+    <string name="likenumber_card">Like</string>
+    <string name="tab_search">Search</string>
+    <string name="tab_home">Home</string>
+    <string name="tab_profile">Profile</string>
 </resources>

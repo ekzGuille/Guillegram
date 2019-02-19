@@ -7,5 +7,10 @@
     <dimen name="vertical_activity_margin">16dp</dimen>
     <dimen name="edtText_margin_createAccount">10dp</dimen>
     <dimen name="heigth_cardview">200dp</dimen>
-    <dimen name="corner_radios_cardview">4dp</dimen>
+    <dimen name="corner_radius_cardview">4dp</dimen>
+    <dimen name="textsize_username_card">25sp</dimen>
+    <dimen name="firstword_textsize_card">15sp</dimen>
+    <dimen name="timecard_marginlefet_card">5dp</dimen>
+    <dimen name="like_margintop_card">10dp</dimen>
+    <dimen name="bottombar_height">70dp</dimen>
 </resources>
