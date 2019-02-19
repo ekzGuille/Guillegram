@@ -10,4 +10,5 @@
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
     <color name="edtTextColorWhite">#FFF</color>
+    <color name="edtTextColorBlack">#000</color>
 </resources>

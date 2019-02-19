@@ -72,6 +72,31 @@
                     android:text="@string/txt_btn_login"
                     android:theme="@style/RaisedButtonDark" />
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/dontHaveAccount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dont_have_account"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/textSize_dont_hace_account"
+                        android:textStyle="bold"
+                        android:onClick="goCreateAccount"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/dontHaveAccount"
+                        android:text="@string/create_here"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/textSize_dont_hace_account"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

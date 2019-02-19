@@ -26,4 +26,12 @@
         <item name="colorControlNormal">@color/edtTextColorWhite</item>
         <item name="colorControlActivated">@color/edtTextColorWhite</item>
     </style>
+    <style name="editTextBlack" parent="TextAppearance.AppCompat">
+        <item name="android:textColorHint">@color/edtTextColorBlack</item>
+        <item name="android:textSize">@dimen/edtTextSizeLogin</item>
+        <item name="android:textColorPrimary">@color/edtTextColorBlack</item>
+        <item name="colorAccent">@color/edtTextColorBlack</item>
+        <item name="colorControlNormal">@color/edtTextColorBlack</item>
+        <item name="colorControlActivated">@color/edtTextColorBlack</item>
+    </style>
 </resources>

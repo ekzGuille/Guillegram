@@ -2,4 +2,10 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="edtTextSizeLogin">22sp</dimen>
     <dimen name="padding_horizontal_login">32dp</dimen>
+    <dimen name="textSize_dont_hace_account">16sp</dimen>
+    <dimen name="horizontal_activity_margin">16dp</dimen>
+    <dimen name="vertical_activity_margin">16dp</dimen>
+    <dimen name="edtText_margin_createAccount">10dp</dimen>
+    <dimen name="heigth_cardview">200dp</dimen>
+    <dimen name="corner_radios_cardview">4dp</dimen>
 </resources>
