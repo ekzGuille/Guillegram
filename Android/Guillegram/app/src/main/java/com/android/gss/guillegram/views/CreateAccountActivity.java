@@ -12,13 +12,13 @@ public class CreateAccountActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
-//        showToolbar(getResources().getString(R.string.toolbar_title_createAccount),true );
+        showToolbar(getResources().getString(R.string.toolbar_title_createAccount),true );
     }
 
     public void showToolbar(String title, boolean btnUp){
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getActionBar().setTitle(title);
+        getSupportActionBar().setTitle(title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(btnUp);
     }
 }

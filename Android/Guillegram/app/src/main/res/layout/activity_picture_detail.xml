@@ -18,7 +18,7 @@
             android:id="@+id/collapsingToolBar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:contentScrim="@color/primary">
 
             <ImageView
@@ -66,21 +66,56 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/activity_horizontal_margin"
-                android:paddingLeft="@dimen/activity_vertical_margin"
-                android:paddingRight="@dimen/activity_vertical_margin">
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin">
 
                 <TextView
-                    android:id="@+id/userNameDetail"
+                    android:id="@+id/likeNumberDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:paddingRight="@dimen/activity_vertical_margin"
-                    android:text="@string/username_example"
-                    android:textSize="@dimen/textsize_usernamedetail">
+                    android:text="10"
+                    android:textSize="@dimen/textsize_likenumber" />
 
-                    <!--TODO: Video 40-->
+                <TextView
+                    android:id="@+id/secondWordDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginleft_secondword"
+                    android:text="@string/second_word_detail"
+                    android:textSize="@dimen/textsize_likenumber" />
+
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_divider"
+                android:background="@android:color/darker_gray" />
+
+
+            <TextView
+                android:id="@+id/titleImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="@dimen/padding_top_tittleimage_detail"
+                android:text="@string/titleimage_detail"
+                android:textSize="@dimen/textsize_likenumber"
+
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textcontent_image_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="@dimen/padding_horizontal_textcontent_detail"
+                android:paddingTop="@dimen/padding_top_tittleimage_detail"
+                android:paddingRight="@dimen/padding_horizontal_textcontent_detail"
+                android:text="@string/lorem"
+                android:textSize="@dimen/textsize_likenumber" />
+
+
         </LinearLayout>
 
 

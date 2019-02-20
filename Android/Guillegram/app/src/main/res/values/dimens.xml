@@ -18,4 +18,9 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="appbarlayout_height">256dp</dimen>
     <dimen name="textsize_usernamedetail">25sp</dimen>
+    <dimen name="textsize_likenumber">15sp</dimen>
+    <dimen name="marginleft_secondword">7dp</dimen>
+    <dimen name="height_divider">1dp</dimen>
+    <dimen name="padding_top_tittleimage_detail">20dp</dimen>
+    <dimen name="padding_horizontal_textcontent_detail">1dp</dimen>
 </resources>

@@ -51,8 +51,6 @@ public class ContainerActivity extends AppCompatActivity {
                                 .addToBackStack(null).commit();
                         break;
                 }
-
-
                 return false;
             }
         });
