@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
 
         picturesRecycler.setLayoutManager(linearLayoutManager);
 
-        PictureAdapterRecyclerView pictureAdapterRecyclerView = new PictureAdapterRecyclerView(getPictures(), R.layout.cardview_picture, getActivity());
+        PictureAdapterRecyclerView pictureAdapterRecyclerView = new PictureAdapterRecyclerView(getActivity(), getPictures(), R.layout.cardview_picture);
         picturesRecycler.setAdapter(pictureAdapterRecyclerView);
         return view;
     }

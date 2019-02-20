@@ -12,5 +12,5 @@
         android:layout_height="@dimen/bottombar_height"/>
 
 
-    <include layout="@layout/bottommenu"/>
+    <include layout="@layout/bottommenu" />
 </RelativeLayout>
