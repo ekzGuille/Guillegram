@@ -51,10 +51,11 @@ public class ContainerActivity extends AppCompatActivity {
                                 .addToBackStack(null).commit();
                         break;
                 }
-                return false;
+                return true;
             }
         });
 
+        tabMenu.setSelectedItemId(R.id.home_tab);
 
     }
 

@@ -12,4 +12,5 @@
     <color name="edtTextColorWhite">#FFF</color>
     <color name="edtTextColorBlack">#000</color>
     <color name="background_textcard">#53292929</color>
+    <color name="bottom_nav_selected">#E4FFDE</color>
 </resources>
