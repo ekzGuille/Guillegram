@@ -26,7 +26,8 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/foto"
                 android:scaleType="centerCrop"
-                app:layout_collapseMode="parallax" />
+                app:layout_collapseMode="parallax"
+                android:transitionName="@string/trasitionname_picture"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -118,4 +119,16 @@
 
 
     </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@drawable/heart_outline"
+        app:layout_anchor="@id/appBar"
+        app:layout_anchorGravity="bottom|end"
+        />
+
 </android.support.design.widget.CoordinatorLayout>

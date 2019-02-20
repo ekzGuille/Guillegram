@@ -23,4 +23,16 @@
     <dimen name="height_divider">1dp</dimen>
     <dimen name="padding_top_tittleimage_detail">20dp</dimen>
     <dimen name="padding_horizontal_textcontent_detail">1dp</dimen>
+    <dimen name="username_profile">30sp</dimen>
+    <dimen name="imageCircleImageProfile">160dp</dimen>
+    <dimen name="margintop_circleimageprofile">30dp</dimen>
+    <dimen name="elevation_circleimageProfile">10dp</dimen>
+    <dimen name="limit_y_circleImage">-206dp</dimen>
+    <dimen name="margintopToolbar_circleImageProfile">-15dp</dimen>
+    <dimen name="width_circleimagetoolbar">40dp</dimen>
+    <dimen name="tesxtsize_username_toolbarprofile">18sp</dimen>
+    <dimen name="marginleft_usernameToolbarprofile">72dp</dimen>
+    <dimen name="margintop_usernameToolbarprofile">-100dp</dimen>
+    <dimen name="limit_y_usernameToolbarprofile">-250dp</dimen>
+    <dimen name="margintopToolbar_usernametoolberrofile">-5dp</dimen>
 </resources>

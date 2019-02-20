@@ -16,7 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/heigth_cardview"
             android:background="@drawable/foto"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            android:transitionName="@string/trasitionname_picture"/>
 
         <LinearLayout
             android:layout_width="match_parent"
