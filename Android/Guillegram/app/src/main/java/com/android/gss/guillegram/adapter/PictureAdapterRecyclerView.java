@@ -1,6 +1,7 @@
 package com.android.gss.guillegram.adapter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.android.gss.guillegram.R;
 import com.android.gss.guillegram.model.Picture;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -18,12 +20,12 @@ public class PictureAdapterRecyclerView extends RecyclerView.Adapter<PictureAdap
 
     private ArrayList<Picture> pictures;
     private int resource;
-    private Activity activity;
+    private Context context;
 
-    public PictureAdapterRecyclerView(ArrayList<Picture> pictures, int resource, Activity activity) {
+    public PictureAdapterRecyclerView(ArrayList<Picture> pictures, int resource, Context context) {
         this.pictures = pictures;
         this.resource = resource;
-        this.activity = activity;
+        this.context = context;
     }
 
     @NonNull
@@ -43,6 +45,7 @@ public class PictureAdapterRecyclerView extends RecyclerView.Adapter<PictureAdap
         pictureViewHolder.timeCard.setText(picture.getTime());
         pictureViewHolder.likeNumberCard.setText(picture.getLikeNumber());
 
+        Glide.with(context).load(picture.getPicture()).centerCrop().into(pictureViewHolder.pictureCard);
 
     }
 
