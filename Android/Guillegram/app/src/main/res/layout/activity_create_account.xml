@@ -66,13 +66,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/edtText_margin_createAccount"
-                android:theme="@style/editTextBlack">
+                android:theme="@style/editTextBlack"
+                app:passwordToggleEnabled="true">
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_password"
+
                     android:inputType="textPassword" />
             </android.support.design.widget.TextInputLayout>
 
@@ -80,7 +82,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/edtText_margin_createAccount"
-                android:theme="@style/editTextBlack">
+                android:theme="@style/editTextBlack"
+                app:passwordToggleEnabled="true">
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/confirm_Password"
