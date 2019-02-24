@@ -9,6 +9,6 @@ import guille.guillegram.api.model.Destino;
 
 @Repository
 @Transactional
-public interface DestinoDao extends CrudRepository<Destino,Integer>{
+public interface DestinoDaoI extends CrudRepository<Destino,Integer>{
 
 }

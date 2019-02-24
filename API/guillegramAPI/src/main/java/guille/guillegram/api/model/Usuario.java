@@ -21,7 +21,7 @@ public class Usuario {
 
 	@Id
 	@NotNull
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_usuario")
 	private int id;
 

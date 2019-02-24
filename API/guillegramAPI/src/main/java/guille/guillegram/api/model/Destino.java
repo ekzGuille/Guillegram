@@ -23,7 +23,7 @@ public class Destino {
 	@Id
 	@Column(name = "id_destino")
 	@NotNull
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@NotNull

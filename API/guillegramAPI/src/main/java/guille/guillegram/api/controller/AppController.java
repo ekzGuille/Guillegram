@@ -1,15 +1,18 @@
 package guille.guillegram.api.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import guille.guillegram.api.dao.DestinoDao;
-import guille.guillegram.api.dao.UsuarioDao;
+import guille.guillegram.api.dao.DestinoDaoI;
+import guille.guillegram.api.dao.UsuarioDaoI;
 import guille.guillegram.api.model.Destino;
 import guille.guillegram.api.model.Usuario;
 
@@ -18,10 +21,10 @@ import guille.guillegram.api.model.Usuario;
 public class AppController {
 
 	@Autowired
-	private UsuarioDao usr;
+	private UsuarioDaoI usr;
 
 	@Autowired
-	private DestinoDao des;
+	private DestinoDaoI des;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public @ResponseBody String welcome() {
@@ -33,9 +36,19 @@ public class AppController {
 		return usr.findAll();
 	}
 
-	@RequestMapping(value = "usuarios/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void addUsr(@RequestBody Usuario u) {
+	@RequestMapping(value = "usuarios/login", method = RequestMethod.POST)
+	public @ResponseBody Usuario login(@RequestParam(value = "username_mail") String username_mail,
+			@RequestParam(value = "contrasena") String contrasena) {
+		return usr.findUserbyUsernameMailContrasena(username_mail, contrasena);
+	}
+
+	@RequestMapping(value = "usuarios/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody Usuario register(@RequestBody Usuario u) {
 		usr.save(u);
+		Usuario regUsr = null;
+		Optional<Usuario> registered = usr.findById(u.getId());
+		regUsr = registered.isPresent() ? registered.get() : null;
+		return regUsr;
 	}
 
 	@RequestMapping(value = "usuarios/delete", method = RequestMethod.POST)

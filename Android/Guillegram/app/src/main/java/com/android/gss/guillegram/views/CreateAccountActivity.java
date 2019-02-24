@@ -1,24 +1,107 @@
 package com.android.gss.guillegram.views;
 
+import android.content.Intent;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
 
 import com.android.gss.guillegram.R;
+import com.android.gss.guillegram.model.api.beans.Usuario;
+import com.android.gss.guillegram.model.api.controllerI.ApiControllerI;
+import com.android.gss.guillegram.util.AppData;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CreateAccountActivity extends AppCompatActivity {
+
+    private Button joinUs;
+    private TextInputEditText email;
+    private TextInputEditText name;
+    private TextInputEditText user;
+    private TextInputEditText password;
+    private TextInputEditText confirm_Password;
+
+    private ApiControllerI apiControllerI;
+    private AppData data;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
-        showToolbar(getResources().getString(R.string.toolbar_title_createAccount),true );
+        showToolbar(getResources().getString(R.string.toolbar_title_createAccount), true);
+
+
+        joinUs = findViewById(R.id.joinUs);
+        email = findViewById(R.id.email);
+        name = findViewById(R.id.name);
+        user = findViewById(R.id.user);
+        password = findViewById(R.id.password);
+        confirm_Password = findViewById(R.id.confirm_Password);
+
+        joinUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Usuario usuario = register(email.getText().toString(),
+                        name.getText().toString(),
+                        user.getText().toString(),
+                        password.getText().toString(),
+                        confirm_Password.getText().toString());
+                if (usuario != null) {
+                    goContainerActivity(v);
+                }
+            }
+        });
+
+
     }
 
-    public void showToolbar(String title, boolean btnUp){
+    public void showToolbar(String title, boolean btnUp) {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(btnUp);
+    }
+
+    private Usuario register(String email, String name, String user, String password, String confirm_password) {
+
+        if (email != null && name != null && user != null && password != null && confirm_password != null &&
+                !email.equals("") && !name.equals("") && !user.equals("") && !password.equals("") && !confirm_password.equals("")
+                && password.equals(confirm_password)) {
+            Usuario u = new Usuario();
+            u.setCorreo(email);
+            u.setNombre(name);
+            u.setNombre_usuario(user);
+            u.setContrasena(password);
+            apiControllerI.register(u).enqueue(new Callback<Usuario>() {
+                Usuario usuario;
+
+                @Override
+                public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        usuario = response.body();
+                        AppData.setUsuario(usuario);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Usuario> call, Throwable t) {
+                    usuario = null;
+                    AppData.setUsuario(usuario);
+                }
+            });
+        }
+        return AppData.getUsuario();
+    }
+
+    private void goContainerActivity(View view) {
+        Intent intent = new Intent(this, ContainerActivity.class);
+        startActivity(intent);
     }
 }
