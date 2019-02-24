@@ -1,83 +1,50 @@
 package guille.guillegram.api.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "usuario", indexes = { @Index(columnList = "id_usuario", name = "indexIdUsr") })
 public class Usuario {
 
 	@Id
-	@Column(nullable = false)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@NotNull
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_usuario")
 	private int id;
 
+	@NotNull
 	@Column(nullable = false)
 	private String nombre;
 
+	@NotNull
 	@Column(nullable = false)
 	private String correo;
 
-	@Column(nullable = false)
+	@NotNull
+	@Column(name = "nombre_usuario", nullable = false)
 	private String nombreUsuario;
 
+	@NotNull
 	@Column(nullable = false)
 	private String contrasena;
 
-	@ManyToMany(mappedBy = "listaUsuarios")
-	private Set<Destino> listaDestinos;
+	@NotNull
+	@OneToMany(mappedBy = "usuario")
+	private List<Destino> usuarios;
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getCorreo() {
-		return correo;
-	}
-
-	public void setCorreo(String correo) {
-		this.correo = correo;
-	}
-
-	public String getNombreUsuario() {
-		return nombreUsuario;
-	}
-
-	public void setNombreUsuario(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
-	}
-
-	public String getContrasena() {
-		return contrasena;
-	}
-
-	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
-	}
-
-	public Set<Destino> getListaDestinos() {
-		return listaDestinos;
-	}
-
-	public void setListaDestinos(Set<Destino> listaDestinos) {
-		this.listaDestinos = listaDestinos;
-	}
+	@NotNull
+	@ManyToMany
+	private List<Destino> destinosFav;
 
 }
