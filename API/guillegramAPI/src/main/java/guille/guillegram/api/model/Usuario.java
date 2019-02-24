@@ -29,8 +29,8 @@ public class Usuario {
 	@Column(nullable = false)
 	private String contrasena;
 
-	@ManyToMany(targetEntity = Destino.class)
-	private Set<?> listaDestinos;
+	@ManyToMany(mappedBy = "listaUsuarios")
+	private Set<Destino> listaDestinos;
 
 	public int getId() {
 		return id;
@@ -72,11 +72,11 @@ public class Usuario {
 		this.contrasena = contrasena;
 	}
 
-	public Set<?> getListaDestinos() {
+	public Set<Destino> getListaDestinos() {
 		return listaDestinos;
 	}
 
-	public void setListaDestinos(Set<?> listaDestinos) {
+	public void setListaDestinos(Set<Destino> listaDestinos) {
 		this.listaDestinos = listaDestinos;
 	}
 

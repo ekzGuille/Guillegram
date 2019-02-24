@@ -1,13 +1,13 @@
 # Desarrollo de las tablas
 
-## Usuarios
+## Usuario
 
 | id | nombre   | correo              |  nombreUsuario  |   contrasena      |
 |----|----------|---------------------| --------------- |------------------ |
 | 1  | John Doe | johndoe@example.com | doejohn         | secretpassword123 |
 |    |          |                     |                 |                   |
 
-## Destinos
+## Destino
 
 | id | nombre     | descripcion                                                                                              | imagen                                                                               |   latitud  |   longitud |
 |----|------------|----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|:----------:|-----------:|

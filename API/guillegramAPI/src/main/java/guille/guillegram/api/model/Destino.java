@@ -29,8 +29,8 @@ public class Destino {
 	@Column(nullable = false)
 	private double longitud;
 
-	@ManyToMany(targetEntity = Usuario.class)
-	private Set<?> listaUsuarios;
+	@ManyToMany
+	private Set<Usuario> listaUsuarios;
 
 	public int getId() {
 		return id;
@@ -72,11 +72,11 @@ public class Destino {
 		this.longitud = longitud;
 	}
 
-	public Set<?> getListaUsuarios() {
+	public Set<Usuario> getListaUsuarios() {
 		return listaUsuarios;
 	}
 
-	public void setListaUsuarios(Set<?> listaUsuarios) {
+	public void setListaUsuarios(Set<Usuario> listaUsuarios) {
 		this.listaUsuarios = listaUsuarios;
 	}
 
