@@ -1,4 +1,4 @@
-package com.guille.guillegram.api.guillegramAPI;
+package guille.guillegram.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
