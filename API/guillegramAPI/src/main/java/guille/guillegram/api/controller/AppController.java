@@ -5,10 +5,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import guille.guillegram.api.dao.DestinoDaoI;
@@ -26,23 +29,23 @@ public class AppController {
 	@Autowired
 	private DestinoDaoI des;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@GetMapping(value = "/")
 	public @ResponseBody String welcome() {
 		return "<h1>Guillegram api home</h1>";
 	}
 
-	@RequestMapping(value = "usuarios/list", method = RequestMethod.GET)
+	@GetMapping(value = "usuarios/list")
 	public @ResponseBody Iterable<Usuario> listUsr() {
 		return usr.findAll();
 	}
 
-	@RequestMapping(value = "usuarios/login", method = RequestMethod.POST)
-	public @ResponseBody Usuario login(@RequestParam(value = "username_mail") String username_mail,
-			@RequestParam(value = "contrasena") String contrasena) {
+	@GetMapping(value = "usuarios/login/{username_mail}/{contrasena}")
+	public @ResponseBody Usuario login(@PathVariable("username_mail") String username_mail,
+			@PathVariable("contrasena") String contrasena) {
 		return usr.findUserbyUsernameMailContrasena(username_mail, contrasena);
 	}
 
-	@RequestMapping(value = "usuarios/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "usuarios/register", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody Usuario register(@RequestBody Usuario u) {
 		usr.save(u);
 		Usuario regUsr = null;
@@ -51,32 +54,32 @@ public class AppController {
 		return regUsr;
 	}
 
-	@RequestMapping(value = "usuarios/delete", method = RequestMethod.POST)
+	@PostMapping(value = "usuarios/delete")
 	public void delUsr(@RequestBody Usuario u) {
 		usr.delete(u);
 	}
 
-	@RequestMapping(value = "usuarios/update", method = RequestMethod.PUT)
+	@PutMapping(value = "usuarios/update")
 	public void updUsr(@RequestBody Usuario u) {
 		usr.save(u);
 	}
 
-	@RequestMapping(value = "destinos/list", method = RequestMethod.GET)
+	@GetMapping(value = "destinos/list")
 	public @ResponseBody Iterable<Destino> listDes() {
 		return des.findAll();
 	}
 
-	@RequestMapping(value = "destinos/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "destinos/add", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void addUDes(@RequestBody Destino d) {
 		des.save(d);
 	}
 
-	@RequestMapping(value = "destinos/delete", method = RequestMethod.POST)
+	@PostMapping(value = "destinos/delete")
 	public void delUDes(@RequestBody Destino d) {
 		des.delete(d);
 	}
 
-	@RequestMapping(value = "destinos/update", method = RequestMethod.PUT)
+	@PutMapping(value = "destinos/update")
 	public void updUDes(@RequestBody Destino d) {
 		des.save(d);
 	}

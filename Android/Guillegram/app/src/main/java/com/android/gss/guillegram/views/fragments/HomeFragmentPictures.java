@@ -17,7 +17,6 @@ import com.android.gss.guillegram.adapter.DestinosAdapterRecyclerView;
 import com.android.gss.guillegram.adapter.PictureAdapterRecyclerView;
 import com.android.gss.guillegram.model.Picture;
 import com.android.gss.guillegram.model.api.beans.Destino;
-import com.android.gss.guillegram.model.api.beans.Usuario;
 import com.android.gss.guillegram.model.api.controllerI.ApiServiceI;
 import com.android.gss.guillegram.util.ApiUtils;
 import com.android.gss.guillegram.util.AppData;
@@ -32,14 +31,9 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragmentPictures extends Fragment {
 
-    private List<Destino> lstDestinos;
-    private ApiServiceI apiServiceI;
-
-    DestinosAdapterRecyclerView destinosAdapterRecyclerView;
-
-    public HomeFragment() {
+    public HomeFragmentPictures() {
         // Required empty public constructor
     }
 
@@ -47,43 +41,32 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        apiServiceI = ApiUtils.getAPIService();
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         showToolbar(getResources().getString(R.string.toolbar_title_home), false, view);
-        getDestinos(view);
+
+        RecyclerView picturesRecycler = view.findViewById(R.id.pictureRecycler);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+        picturesRecycler.setLayoutManager(linearLayoutManager);
+
+        PictureAdapterRecyclerView pictureAdapterRecyclerView = new PictureAdapterRecyclerView(getActivity(), getPictures(), R.layout.cardview_picture)
+        ;
+        picturesRecycler.setAdapter(pictureAdapterRecyclerView);
         return view;
     }
 
-    public void getDestinos(final View v) {
-
-
-        apiServiceI.getAllDestinos().enqueue(new Callback<List<Destino>>() {
-
-            @Override
-            public void onResponse(Call<List<Destino>> call, Response<List<Destino>> response) {
-                if (response.isSuccessful()) {
-                    List<Destino> l = response.body();
-
-                    AppData.setListadoDestinos(l);
-                    RecyclerView destinosRecycler = v.findViewById(R.id.pictureRecycler);
-
-                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-                    linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-
-                    destinosRecycler.setLayoutManager(linearLayoutManager);
-
-                    DestinosAdapterRecyclerView destinosAdapterRecyclerView = new DestinosAdapterRecyclerView(getActivity(), l, R.layout.cardview_destino);
-                    destinosRecycler.setAdapter(destinosAdapterRecyclerView);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Destino>> call, Throwable t) {
-
-            }
-        });
+    public ArrayList<Picture> getPictures() {
+        ArrayList<Picture> pictures = new ArrayList<>();
+        pictures.add(new Picture("https://i.imgur.com/eBF3WR7.jpg", "Federico", "2 días", "3 Me gusta"));
+        pictures.add(new Picture("https://i.imgur.com/nElY8xo.jpg", "Romualdo", "4 días", "10 Me gusta"));
+        pictures.add(new Picture("https://i.imgur.com/gNS5eeO.jpg", "Pascual", "1 días", "8 Me gusta"));
+        pictures.add(new Picture("https://i.imgur.com/v3El8IJ.jpg", "Maite", "5 días", "6 Me gusta"));
+        return pictures;
     }
+
 
     public void showToolbar(String title, boolean btnUp, View view) {
         Toolbar toolbar = view.findViewById(R.id.toolbar);

@@ -1,32 +1,34 @@
 package com.android.gss.guillegram;
 
 import android.content.Intent;
+import android.media.audiofx.AcousticEchoCanceler;
+import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.gss.guillegram.model.api.beans.Usuario;
-import com.android.gss.guillegram.model.api.controllerI.ApiControllerI;
+import com.android.gss.guillegram.model.api.controllerI.ApiServiceI;
 import com.android.gss.guillegram.util.ApiUtils;
 import com.android.gss.guillegram.util.AppData;
-import com.android.gss.guillegram.util.RetrofitClient;
+import com.android.gss.guillegram.util.IPGetter;
 import com.android.gss.guillegram.views.ContainerActivity;
 import com.android.gss.guillegram.views.CreateAccountActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private TextView createhere;
     private TextInputEditText username;
     private TextInputEditText password;
-    private ApiControllerI apiControllerI;
-    private AppData data;
+    private ApiServiceI apiServiceI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +38,12 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.login);
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
-        apiControllerI = ApiUtils.getApiUtils();
+        apiServiceI = ApiUtils.getAPIService();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Usuario usuario = getUsuario(username.getText().toString(), password.getText().toString());
-                if (usuario != null) {
-                    goContainerActivity(v);
-                }
+                getUsuario(username.getText().toString(), password.getText().toString());
             }
         });
 
@@ -53,34 +52,35 @@ public class LoginActivity extends AppCompatActivity {
         createhere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goCreateAccount(v);
+                goCreateAccount();
             }
         });
-
-
     }
 
-    private void goCreateAccount(View view) {
+    private void goCreateAccount() {
         Intent intent = new Intent(this, CreateAccountActivity.class);
         startActivity(intent);
     }
 
-    private void goContainerActivity(View view) {
+    private void goContainerActivity() {
         Intent intent = new Intent(this, ContainerActivity.class);
         startActivity(intent);
     }
 
-    private Usuario getUsuario(String username_mail, String contrasena) {
+    private void getUsuario(String username_mail, String contrasena) {
         if (username_mail != null && contrasena != null && !username_mail.equals("") && !contrasena.equals("")) {
-            apiControllerI.getLogin(username_mail, contrasena).enqueue(new Callback<Usuario>() {
 
+            apiServiceI.getLogin(username_mail, contrasena).enqueue(new Callback<Usuario>() {
                 Usuario usuario;
 
                 @Override
                 public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                     if (response.isSuccessful()) {
                         usuario = response.body();
+                        System.out.println(usuario.toString());
                         AppData.setUsuario(usuario);
+                        goContainerActivity();
+
                     }
                 }
 
@@ -91,6 +91,5 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
         }
-        return AppData.getUsuario();
     }
 }

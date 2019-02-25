@@ -1,16 +1,17 @@
 package com.android.gss.guillegram.views;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
 import com.android.gss.guillegram.R;
 import com.android.gss.guillegram.model.api.beans.Usuario;
-import com.android.gss.guillegram.model.api.controllerI.ApiControllerI;
+import com.android.gss.guillegram.model.api.controllerI.ApiServiceI;
+import com.android.gss.guillegram.util.ApiUtils;
 import com.android.gss.guillegram.util.AppData;
 
 import retrofit2.Call;
@@ -26,8 +27,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     private TextInputEditText password;
     private TextInputEditText confirm_Password;
 
-    private ApiControllerI apiControllerI;
-    private AppData data;
+    private ApiServiceI apiServiceI;
 
 
     @Override
@@ -43,6 +43,8 @@ public class CreateAccountActivity extends AppCompatActivity {
         user = findViewById(R.id.user);
         password = findViewById(R.id.password);
         confirm_Password = findViewById(R.id.confirm_Password);
+
+        apiServiceI = ApiUtils.getAPIService();
 
         joinUs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,9 +79,9 @@ public class CreateAccountActivity extends AppCompatActivity {
             Usuario u = new Usuario();
             u.setCorreo(email);
             u.setNombre(name);
-            u.setNombre_usuario(user);
+            u.setNombreUsuario(user);
             u.setContrasena(password);
-            apiControllerI.register(u).enqueue(new Callback<Usuario>() {
+            apiServiceI.register(u).enqueue(new Callback<Usuario>() {
                 Usuario usuario;
 
                 @Override

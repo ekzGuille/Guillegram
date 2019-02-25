@@ -8,7 +8,7 @@ public class Destino {
     private String imagen;
     private double latitud;
     private double longitud;
-    private int id_usuario;
+    private Usuario usuario;
 
     public int getId_destino() {
         return id_destino;
@@ -58,12 +58,12 @@ public class Destino {
         this.longitud = longitud;
     }
 
-    public int getId_usuario() {
-        return id_usuario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override
@@ -75,7 +75,7 @@ public class Destino {
                 ", imagen='" + imagen + '\'' +
                 ", latitud=" + latitud +
                 ", longitud=" + longitud +
-                ", id_usuario=" + id_usuario +
+                ", usuario=" + usuario +
                 '}';
     }
 }

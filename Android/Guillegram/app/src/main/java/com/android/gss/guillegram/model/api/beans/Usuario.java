@@ -2,18 +2,18 @@ package com.android.gss.guillegram.model.api.beans;
 
 public class Usuario {
 
-    private int id_usuario;
+    private int id;
     private String nombre;
     private String correo;
-    private String nombre_usuario;
+    private String nombreUsuario;
     private String contrasena;
 
-    public int getId_usuario() {
-        return id_usuario;
+    public int getIdUsuario() {
+        return id;
     }
 
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setIdUsuario(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -32,12 +32,12 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public String getNombre_usuario() {
-        return nombre_usuario;
+    public String getNombreUsuario() {
+        return nombreUsuario;
     }
 
-    public void setNombre_usuario(String nombre_usuario) {
-        this.nombre_usuario = nombre_usuario;
+    public void setNombreUsuario(String nombre_usuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
     public String getContrasena() {
@@ -51,10 +51,10 @@ public class Usuario {
     @Override
     public String toString() {
         return "Usuario{" +
-                "id_usuario=" + id_usuario +
+                "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", correo='" + correo + '\'' +
-                ", nombre_usuario='" + nombre_usuario + '\'' +
+                ", nombreUsuario='" + nombreUsuario + '\'' +
                 ", contrasena='" + contrasena + '\'' +
                 '}';
     }

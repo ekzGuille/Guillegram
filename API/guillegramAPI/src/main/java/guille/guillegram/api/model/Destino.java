@@ -46,7 +46,6 @@ public class Destino {
 	@Column(nullable = false)
 	private double longitud;
 
-	@JsonIgnore
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")

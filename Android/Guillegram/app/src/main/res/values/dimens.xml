@@ -35,4 +35,5 @@
     <dimen name="margintop_usernameToolbarprofile">-100dp</dimen>
     <dimen name="limit_y_usernameToolbarprofile">-250dp</dimen>
     <dimen name="margintopToolbar_usernametoolberrofile">-5dp</dimen>
+    <dimen name="localizacionCard">15sp</dimen>
 </resources>
