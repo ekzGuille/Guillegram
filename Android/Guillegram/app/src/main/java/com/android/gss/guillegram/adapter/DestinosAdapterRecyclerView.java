@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.android.gss.guillegram.R;
 import com.android.gss.guillegram.model.Picture;
 import com.android.gss.guillegram.model.api.beans.Destino;
+import com.android.gss.guillegram.util.AppData;
 import com.android.gss.guillegram.views.PictureDetailActivity;
 import com.bumptech.glide.Glide;
 
@@ -38,12 +39,12 @@ public class DestinosAdapterRecyclerView extends RecyclerView.Adapter<DestinosAd
     @NonNull
     @Override
     public DestinoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(resource,viewGroup,false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(resource, viewGroup, false);
         return new DestinoViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DestinoViewHolder pictureViewHolder, int i) {
+    public void onBindViewHolder(@NonNull DestinoViewHolder pictureViewHolder, final int i) {
         Destino destino = items.get(i);
 
         pictureViewHolder.userNameCard.setText(destino.getUsuario().getNombre());
@@ -56,16 +57,17 @@ public class DestinosAdapterRecyclerView extends RecyclerView.Adapter<DestinosAd
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, PictureDetailActivity.class);
+                AppData.setDestinoSeleccionado(items.get(i));
+                intent.putExtra("destino", items.get(i));
+
                 /*
                 No es necesaria hacer la comrpobación porque nuestra SDK elegida es mayor a LOLLIPOP
                 por lo que los moviles que tengan versiones menores que LOLLIPOP no podran correr nuestra App
                 */
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
-                    Explode ex = new Explode();
-                    ex.setDuration(1000);
-                    ((Activity) context).getWindow().setExitTransition(ex);
-                    context.startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(((Activity) context),v,((Activity) context).getString(R.string.trasitionname_picture)).toBundle());
-                }else{
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    ((Activity) context).getWindow().setExitTransition(new Explode());
+                    context.startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(((Activity) context), v, ((Activity) context).getString(R.string.trasitionname_picture)).toBundle());
+                } else {
                     context.startActivity(intent);
                 }
             }

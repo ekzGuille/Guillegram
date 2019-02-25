@@ -10,10 +10,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.android.gss.guillegram.R;
 import com.android.gss.guillegram.adapter.PictureAdapterRecyclerView;
 import com.android.gss.guillegram.model.Picture;
+import com.android.gss.guillegram.model.api.beans.Usuario;
+import com.android.gss.guillegram.util.AppData;
 
 import java.util.ArrayList;
 
@@ -22,6 +25,8 @@ import java.util.ArrayList;
  */
 public class ProfileFragment extends Fragment {
 
+    private TextView usernameProfile;
+    private Usuario usuario;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -34,6 +39,9 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         showToolbar("", false, view);
 
+        usuario = AppData.getUsuario();
+        usernameProfile = view.findViewById(R.id.usernameProfile);
+        usernameProfile.setText(usuario.getNombreUsuario());
 
         RecyclerView picturesRecycler = view.findViewById(R.id.pictureprofileRecycler);
 

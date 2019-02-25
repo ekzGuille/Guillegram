@@ -47,7 +47,6 @@ public class Usuario {
 	private List<Destino> usuarios;
 
 	@JsonIgnore
-	@NotNull
 	@ManyToMany
 	private List<Destino> destinosFav;
 

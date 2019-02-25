@@ -1,5 +1,6 @@
 package guille.guillegram.api.controller;
 
+import java.util.HashSet;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +32,22 @@ public class AppController {
 
 	@GetMapping(value = "/")
 	public @ResponseBody String welcome() {
-		return "<h1>Guillegram api home</h1>";
+		return ""
+			+ "<div 'style: text-align:center;'>"
+				+ "<h1>Guillegram api home</h1>"
+				+ "<ul>"
+					+ "<li><a href='usuarios/list'>Listar Usuarios</a></li>"
+					+ "<li><a href='destinos/list'>Listar Destinos</a></li>"
+				+ "</ul>"
+			+ "</div>";
 	}
 
+	
+	
+	/*
+	 * USUARIOS
+	 * */
+	
 	@GetMapping(value = "usuarios/list")
 	public @ResponseBody Iterable<Usuario> listUsr() {
 		return usr.findAll();
@@ -48,10 +62,8 @@ public class AppController {
 	@PostMapping(value = "usuarios/register", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody Usuario register(@RequestBody Usuario u) {
 		usr.save(u);
-		Usuario regUsr = null;
 		Optional<Usuario> registered = usr.findById(u.getId());
-		regUsr = registered.isPresent() ? registered.get() : null;
-		return regUsr;
+		return registered.isPresent() ? registered.get() : null;
 	}
 
 	@PostMapping(value = "usuarios/delete")
@@ -63,6 +75,16 @@ public class AppController {
 	public void updUsr(@RequestBody Usuario u) {
 		usr.save(u);
 	}
+	
+	@PutMapping
+	public void addFavorito(@RequestBody Usuario u, @RequestBody Destino d) {
+//		u.setDestinosFav(new HashSet<>()v);;
+	}
+	
+	
+	/*
+	 * DESTINOS
+	 * */
 
 	@GetMapping(value = "destinos/list")
 	public @ResponseBody Iterable<Destino> listDes() {

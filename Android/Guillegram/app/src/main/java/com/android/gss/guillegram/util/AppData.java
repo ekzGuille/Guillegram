@@ -9,6 +9,7 @@ public class AppData {
 
     private static Usuario usuario;
     private static List<Destino> listadoDestinos;
+    private static Destino destinoSeleccionado;
 
     public static Usuario getUsuario() {
         return usuario;
@@ -24,5 +25,13 @@ public class AppData {
 
     public static void setListadoDestinos(List<Destino> listadoDestinos) {
         AppData.listadoDestinos = listadoDestinos;
+    }
+
+    public static Destino getDestinoSeleccionado() {
+        return destinoSeleccionado;
+    }
+
+    public static void setDestinoSeleccionado(Destino destinoSeleccionado) {
+        AppData.destinoSeleccionado = destinoSeleccionado;
     }
 }

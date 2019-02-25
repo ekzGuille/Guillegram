@@ -46,13 +46,11 @@ public class Destino {
 	@Column(nullable = false)
 	private double longitud;
 
-	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 
 	@JsonIgnore
-	@NotNull
 	@ManyToMany(mappedBy = "destinosFav")
 	private List<Usuario> usuariosFav;
 

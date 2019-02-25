@@ -1,6 +1,8 @@
 package com.android.gss.guillegram.model.api.beans;
 
-public class Destino {
+import java.io.Serializable;
+
+public class Destino implements Serializable {
 
     private int id_destino;
     private String nombre;
