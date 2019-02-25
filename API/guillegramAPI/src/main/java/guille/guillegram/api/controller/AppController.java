@@ -30,22 +30,15 @@ public class AppController {
 
 	@GetMapping(value = "/")
 	public @ResponseBody String welcome() {
-		return ""
-			+ "<div 'style: text-align:center;'>"
-				+ "<h1>Guillegram api home</h1>"
-				+ "<ul>"
-					+ "<li><a href='usuarios/list'>Listar Usuarios</a></li>"
-					+ "<li><a href='destinos/list'>Listar Destinos</a></li>"
-				+ "</ul>"
-			+ "</div>";
+		return "" + "<div 'style: text-align:center;'>" + "<h1>Guillegram api home</h1>" + "<ul>"
+				+ "<li><a href='usuarios/list'>Listar Usuarios</a></li>"
+				+ "<li><a href='destinos/list'>Listar Destinos</a></li>" + "</ul>" + "</div>";
 	}
 
-	
-	
 	/*
 	 * USUARIOS
-	 * */
-	
+	 */
+
 	@GetMapping(value = "usuarios/list")
 	public @ResponseBody Iterable<Usuario> listUsr() {
 		return usr.findAll();
@@ -73,16 +66,21 @@ public class AppController {
 	public void updUsr(@RequestBody Usuario u) {
 		usr.save(u);
 	}
-	
+
+	@GetMapping(value = "usuarios/get/{id}")
+	public @ResponseBody Usuario getUsr(@PathVariable("id") int id) {
+		Optional<Usuario> found = usr.findById(id);
+		return found.isPresent() ? found.get() : null;
+	}
+
 	@PutMapping
 	public void addFavorito(@RequestBody Usuario u, @RequestBody Destino d) {
 //		u.setDestinosFav(new HashSet<>()v);;
 	}
-	
-	
+
 	/*
 	 * DESTINOS
-	 * */
+	 */
 
 	@GetMapping(value = "destinos/list")
 	public @ResponseBody Iterable<Destino> listDes() {

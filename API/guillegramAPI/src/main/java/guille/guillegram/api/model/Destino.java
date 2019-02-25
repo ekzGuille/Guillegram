@@ -20,7 +20,7 @@ public class Destino {
 	@Id
 	@NotNull
 	@Column(name = "id_destino")
-	//Genera una PK indexada. SOLO MYSQL
+	// Genera una PK indexada. SOLO MYSQL
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
@@ -46,11 +46,11 @@ public class Destino {
 
 	@NotNull
 	@ManyToOne
-	//Hay que indicar con qué columna se quiere unir
+	// Hay que indicar con qué columna se quiere unir
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 
-	//Ignorar esta propiedad (para evitar bucle infinito)
+	// Ignorar esta propiedad (para evitar bucle infinito)
 	@JsonIgnoreProperties("destinosFav")
 	@ManyToMany(mappedBy = "destinosFav")
 	private List<Usuario> usuariosFav;
@@ -117,6 +117,12 @@ public class Destino {
 
 	public void setUsuariosFav(List<Usuario> usuariosFav) {
 		this.usuariosFav = usuariosFav;
+	}
+
+	@Override
+	public String toString() {
+		return "Destino [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", imagen=" + imagen
+				+ ", latitud=" + latitud + ", longitud=" + longitud + "]";
 	}
 
 }
