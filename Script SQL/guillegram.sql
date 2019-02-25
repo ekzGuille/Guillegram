@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 24-02-2019 a las 19:59:06
+-- Tiempo de generación: 25-02-2019 a las 21:55:16
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.3.0
 
@@ -46,14 +46,17 @@ CREATE TABLE `destino` (
 --
 
 INSERT INTO `destino` (`id_destino`, `descripcion`, `imagen`, `latitud`, `longitud`, `nombre`, `id_usuario`) VALUES
-(0, 'El puente Nuevo es el monumento más emblemático de la ciudad malagueña de Ronda y fue construido entre 1751 y 1793. Une las zonas histórica y moderna de la ciudad salvando el Tajo de Ronda.', 'http://www.escapadarural.com/blog/wp-content/uploads/2016/03/Ronda-2.jpg', 36.741117, -5.165751, 'Puente Nuevo Ronda', 1),
 (1, 'Gaztelugatxe se encuentra en la localidad de Bermeo, en Vizcaya (País Vasco), básicamente es un islote que se encuentra unido al continente gracias a un puente que se construyó para unir ambos puntos.', 'https://farm3.staticflickr.com/2810/9723281289_bac6f8954a_c.jpg', 43.447075, -2.785058, 'Islote Gaztelugatxe', 9),
 (2, 'Las Bardenas Reales de Navarra, es un paraje natural situado al sureste de Navarra, conocido por tener uno de los paisajes más extraños y diferentes del país debido a las condiciones de su terreno que lo hacen lucir como un desierto.', 'http://turismo.navarra.com/wp-content/uploads/Bardenas_Reales_Navarra_2.jpg', 42.186654, -1.475563, 'Bardenas Reales', 4),
 (3, 'Las famosas Cuevas del Drach, se encuentran situadas en la Isla de Mallorca, en el municipio de Manacor, son famosas por estar conformadas por cuatro cuevas dentro del hermoso archipiélago de las Islas Baleares.', 'http://porsolea.com/wp-content/uploads/2015/05/cuevas-del-drach-Matthew-R.jpg', 39.536594, 3.330437, 'Cuevas del Drach', 2),
 (4, 'Es considerado un rincón natural de extensa belleza, cargada de arroyos y cascadas, pero sobretodo de pequeñas pozas naturales que lo convierten en uno de los destinos más interesantes y populares en verano.', 'https://www.campingriojerte.com/images/paginas/b964b8d9772a06ab5c3b677b09bb2072.jpg', 40.224003, -5.750262, 'Garganta de los Infiernos', 8),
 (5, 'Las Médulas es el nombre que recibe un espacio que ha tomado ciertas características debido a la explotación que se realizaba en el terreno, ya que era una zona rica en oro y que los romanos utilizaron para la extracción de este material.', 'https://cdn1.guias-viajar.com/wp-content/uploads/2016/11/Las-Médulas-Orellán-FB-007.jpg', 42.459554, -6.760084, 'Las Médulas', 16),
 (6, 'Los Mallos de Riglos, en la localidad de Riglos, es una caprichosa formación geológica. Existen senderos que te permitirán hacer un recorrido por este monumento natural.', 'https://www.escapadarural.com/blog/wp-content/uploads/2016/05/Mallos-de-Riglo-8.jpg', 42.351608, -0.724167, 'Mallos de Riglos', 7),
-(7, 'El salto del Nervión es una cascada de agua de España que se encuentra ubicada justo en el límite entre las provincias de Burgos y Álava dentro del área natural protegida Monte de Santiago', 'https://aunclicdelaaventura.com/wp-content/uploads/2017/09/Cascada-del-Nervion.jpg', 42.939844, -2.980714, 'Salto del Nervión', 15);
+(7, 'El salto del Nervión es una cascada de agua de España que se encuentra ubicada justo en el límite entre las provincias de Burgos y Álava dentro del área natural protegida Monte de Santiago', 'https://aunclicdelaaventura.com/wp-content/uploads/2017/09/Cascada-del-Nervion.jpg', 42.939844, -2.980714, 'Salto del Nervión', 15),
+(8, 'Anento es un municipio de España situado en la comarca natural del Campo Romanos, ​ en la provincia de Zaragoza, comunidad autónoma de Aragón.', 'http://redaragon.elperiodicodearagon.com/img/upload/33912_g.JPG', 41.069771, -1.333857, 'Anento', 11),
+(9, 'Mondoñedo es un municipio y localidad situado en la comarca de La Mariña Central, de la cual es capital, en el norte de la provincia de Lugo, comunidad autónoma de Galicia, España.', 'http://www.elmapadelviajero.com/wp-content/uploads/2017/05/catedral-mondonedo.jpg', 43.428723, -7.363777, 'Mondoñedo', 15),
+(10, 'Ansó es una localidad y municipio español perteneciente a la provincia de Huesca y la comarca de la Jacetania, en la comunidad autónoma de Aragón.', 'http://historico.utrera.org/opencms/export/sites/default/utrera/galeria/images/noticias/turismo_joven_verano_20151432281734662.jpg', 42.755935, -0.828573, 'Ansó', 8),
+(11, 'El puente Nuevo es el monumento más emblemático de la ciudad malagueña de Ronda y fue construido entre 1751 y 1793. Une las zonas histórica y moderna de la ciudad salvando el Tajo de Ronda.', 'http://www.escapadarural.com/blog/wp-content/uploads/2016/03/Ronda-2.jpg', 36.741117, -5.165751, 'Puente Nuevo Ronda', 1);
 
 -- --------------------------------------------------------
 
@@ -92,7 +95,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `contrasena`, `correo`, `nombre`, `nombre_usuario`) VALUES
-(1, 'lJrgHqzSB', 'dbarti0@mediafire.com', 'Dannye', 'ddickinson0'),
+(1, 'fed', 'fede@rico.com', 'Federico', 'fede'),
 (2, 'KHQurXMAEQJ', 'iaguirre1@ucla.edu', 'Iain', 'iweiner1'),
 (3, 'deFvqNo5Om55', 'aabson2@yelp.com', 'Andrus', 'ageerdts2'),
 (4, 'PaI6WHIF', 'glehrmann3@networkadvertising.org', 'Gaylene', 'gvittery3'),
@@ -107,8 +110,8 @@ INSERT INTO `usuario` (`id_usuario`, `contrasena`, `correo`, `nombre`, `nombre_u
 (13, 'LpGNWfk1Y6l', 'tantosc@multiply.com', 'Tyrone', 'twoodusc'),
 (14, 'XePFqBnsTe', 'edelahuntyd@sogou.com', 'Eward', 'erolingsond'),
 (15, 'u0ZK0Z', 'lholbye@blog.com', 'Lonnie', 'lbawcocke'),
-(16, 'gss', 'gss@gss.com', 'gss', '@gss'),
-(17, 'Guillermo', 'guillermo@guillermo.com', 'Guillermo', '@Guillermo');
+(16, 'gss', 'gss@gss.com', 'gss', 'gss'),
+(17, 'Guillermo', 'guillermo@guillermo.com', 'Guillermo', 'Guillermo');
 
 -- --------------------------------------------------------
 
@@ -122,6 +125,14 @@ CREATE TABLE `usuario_destinos_fav` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
+-- Volcado de datos para la tabla `usuario_destinos_fav`
+--
+
+INSERT INTO `usuario_destinos_fav` (`usuarios_fav_id_usuario`, `destinos_fav_id_destino`) VALUES
+(4, 12),
+(6, 6);
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -130,16 +141,13 @@ CREATE TABLE `usuario_destinos_fav` (
 --
 ALTER TABLE `destino`
   ADD PRIMARY KEY (`id_destino`),
-  ADD KEY `indexIdDes` (`id_destino`),
   ADD KEY `FK53g56gtuvlu0dtry39in3f2il` (`id_usuario`);
 
 --
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usuario`),
-  ADD KEY `indexIdUsr` (`id_usuario`),
-  ADD KEY `id_usuario` (`id_usuario`);
+  ADD PRIMARY KEY (`id_usuario`);
 
 --
 -- Indices de la tabla `usuario_destinos_fav`
@@ -147,6 +155,22 @@ ALTER TABLE `usuario`
 ALTER TABLE `usuario_destinos_fav`
   ADD KEY `FK2b8bca4vg79d9mjtq6mqrxarq` (`destinos_fav_id_destino`),
   ADD KEY `FKjj92trqv0cso5df30hgd8ydmj` (`usuarios_fav_id_usuario`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `destino`
+--
+ALTER TABLE `destino`
+  MODIFY `id_destino` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

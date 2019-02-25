@@ -7,22 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "destino", indexes = { @Index(columnList = "id_destino", name = "indexIdDes") })
 public class Destino {
 
 	@Id
-	@Column(name = "id_destino")
 	@NotNull
+	@Column(name = "id_destino")
+	//Genera una PK indexada. SOLO MYSQL
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
@@ -48,9 +46,11 @@ public class Destino {
 
 	@NotNull
 	@ManyToOne
+	//Hay que indicar con qué columna se quiere unir
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 
+	//Ignorar esta propiedad (para evitar bucle infinito)
 	@JsonIgnoreProperties("destinosFav")
 	@ManyToMany(mappedBy = "destinosFav")
 	private List<Usuario> usuariosFav;
