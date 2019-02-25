@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "destino", indexes = { @Index(columnList = "id_destino", name = "indexIdDes") })
@@ -46,11 +46,12 @@ public class Destino {
 	@Column(nullable = false)
 	private double longitud;
 
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 
-	@JsonIgnore
+	@JsonIgnoreProperties("destinosFav")
 	@ManyToMany(mappedBy = "destinosFav")
 	private List<Usuario> usuariosFav;
 

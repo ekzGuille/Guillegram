@@ -1,6 +1,7 @@
 package com.android.gss.guillegram.model.api.beans;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Usuario implements Serializable {
 
@@ -9,12 +10,15 @@ public class Usuario implements Serializable {
     private String correo;
     private String nombreUsuario;
     private String contrasena;
+    private List<Destino> usuarios;
+    private List<Destino> destinosFav;
 
-    public int getIdUsuario() {
+
+    public int getId() {
         return id;
     }
 
-    public void setIdUsuario(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -38,7 +42,7 @@ public class Usuario implements Serializable {
         return nombreUsuario;
     }
 
-    public void setNombreUsuario(String nombre_usuario) {
+    public void setNombreUsuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
     }
 
@@ -50,6 +54,22 @@ public class Usuario implements Serializable {
         this.contrasena = contrasena;
     }
 
+    public List<Destino> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Destino> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    public List<Destino> getDestinosFav() {
+        return destinosFav;
+    }
+
+    public void setDestinosFav(List<Destino> destinosFav) {
+        this.destinosFav = destinosFav;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
@@ -58,6 +78,8 @@ public class Usuario implements Serializable {
                 ", correo='" + correo + '\'' +
                 ", nombreUsuario='" + nombreUsuario + '\'' +
                 ", contrasena='" + contrasena + '\'' +
+                ", usuarios=" + usuarios +
+                ", destinosFav=" + destinosFav +
                 '}';
     }
 }

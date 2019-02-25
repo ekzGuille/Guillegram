@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "usuario", indexes = { @Index(columnList = "id_usuario", name = "indexIdUsr") })
@@ -42,11 +43,10 @@ public class Usuario {
 	private String contrasena;
 
 	@JsonIgnore
-	@NotNull
 	@OneToMany(mappedBy = "usuario")
 	private List<Destino> usuarios;
 
-	@JsonIgnore
+	@JsonIgnoreProperties("usuario")
 	@ManyToMany
 	private List<Destino> destinosFav;
 
