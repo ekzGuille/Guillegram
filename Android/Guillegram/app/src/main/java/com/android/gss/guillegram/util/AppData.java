@@ -10,6 +10,8 @@ public class AppData {
     private static Usuario usuario;
     private static List<Destino> listadoDestinos;
     private static Destino destinoSeleccionado;
+    private static List<Destino> listadoDestinosFavoritos;
+    private static List<Destino> listadoDestinosPerfil;
 
     public static Usuario getUsuario() {
         return usuario;
@@ -33,5 +35,21 @@ public class AppData {
 
     public static void setDestinoSeleccionado(Destino destinoSeleccionado) {
         AppData.destinoSeleccionado = destinoSeleccionado;
+    }
+
+    public static List<Destino> getListadoDestinosFavoritos() {
+        return listadoDestinosFavoritos;
+    }
+
+    public static void setListadoDestinosFavoritos(List<Destino> listadoDestinosFavoritos) {
+        AppData.listadoDestinosFavoritos = listadoDestinosFavoritos;
+    }
+
+    public static List<Destino> getListadoDestinosPerfil() {
+        return listadoDestinosPerfil;
+    }
+
+    public static void setListadoDestinosPerfil(List<Destino> listadoDestinosPerfil) {
+        AppData.listadoDestinosPerfil = listadoDestinosPerfil;
     }
 }

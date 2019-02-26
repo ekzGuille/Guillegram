@@ -47,15 +47,15 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        apiServiceI = ApiUtils.getAPIService();
-
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         showToolbar(getResources().getString(R.string.toolbar_title_home), false, view);
+
+        apiServiceI = ApiUtils.getAPIService();
         getDestinos(view);
         return view;
     }
 
-    public void getDestinos(final View v) {
+    public void getDestinos(final View view) {
 
 
         apiServiceI.getAllDestinos().enqueue(new Callback<List<Destino>>() {
@@ -63,10 +63,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Destino>> call, Response<List<Destino>> response) {
                 if (response.isSuccessful()) {
+                    // TODO Controlar que los datos de entrada no sean null o vacio
                     List<Destino> l = response.body();
 
                     AppData.setListadoDestinos(l);
-                    RecyclerView destinosRecycler = v.findViewById(R.id.pictureRecycler);
+                    RecyclerView destinosRecycler = view.findViewById(R.id.pictureRecycler);
 
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
                     linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);

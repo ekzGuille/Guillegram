@@ -77,8 +77,8 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                     if (response.isSuccessful()) {
+                        //TODO Controlar que los datos de entrada no sean null o vacio
                         usuario = response.body();
-                        System.out.println(usuario.toString());
                         AppData.setUsuario(usuario);
                         goContainerActivity();
                     }

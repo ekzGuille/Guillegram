@@ -101,4 +101,9 @@ public class AppController {
 	public void updUDes(@RequestBody Destino d) {
 		des.save(d);
 	}
+	
+	@GetMapping(value="destinos/usuario/{id}")
+	public @ResponseBody Iterable<Destino> getDestinos(@PathVariable("id") int id) {
+		return des.findDestinosByIdUsuario(id);
+	}
 }

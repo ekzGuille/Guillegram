@@ -25,6 +25,12 @@ public interface ApiServiceI {
     Call<Usuario> getLogin(@Path("username_mail") String username_mail, @Path("contrasena") String contrasena);
 
     @POST("usuarios/register")
-    @FormUrlEncoded
+//    @FormUrlEncoded
     Call<Usuario> register(@Body Usuario u);
+
+    @GET("usuarios/get/{id}")
+    Call<Usuario> getUsuario(@Path("id") int id);
+
+    @GET("destinos/usuario/{id}")
+    Call<List<Destino>> getDestinos(@Path("id") int id);
 }

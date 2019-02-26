@@ -13,12 +13,21 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.android.gss.guillegram.R;
+import com.android.gss.guillegram.adapter.DestinosAdapterRecyclerView;
 import com.android.gss.guillegram.adapter.PictureAdapterRecyclerView;
 import com.android.gss.guillegram.model.Picture;
+import com.android.gss.guillegram.model.api.beans.Destino;
 import com.android.gss.guillegram.model.api.beans.Usuario;
+import com.android.gss.guillegram.model.api.controllerI.ApiServiceI;
+import com.android.gss.guillegram.util.ApiUtils;
 import com.android.gss.guillegram.util.AppData;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +36,7 @@ public class ProfileFragment extends Fragment {
 
     private TextView usernameProfile;
     private Usuario usuario;
+    private ApiServiceI apiServiceI;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -41,21 +51,13 @@ public class ProfileFragment extends Fragment {
 
         usuario = AppData.getUsuario();
         usernameProfile = view.findViewById(R.id.usernameProfile);
-        usernameProfile.setText(usuario.getNombreUsuario());
+        usernameProfile.setText(usuario.getNombre());
 
-        RecyclerView picturesRecycler = view.findViewById(R.id.pictureprofileRecycler);
+        apiServiceI = ApiUtils.getAPIService();
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-
-        picturesRecycler.setLayoutManager(linearLayoutManager);
-
-        PictureAdapterRecyclerView pictureAdapterRecyclerView = new PictureAdapterRecyclerView(getActivity(), getPictures(), R.layout.cardview_picture);
-        picturesRecycler.setAdapter(pictureAdapterRecyclerView);
-
+        getFotosUsuario(view, usuario.getId());
         return view;
     }
-
 
 
     public void showToolbar(String title, boolean btnUp, View view) {
@@ -65,13 +67,32 @@ public class ProfileFragment extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(btnUp);
     }
 
+    private void getFotosUsuario(final View view, int id) {
 
-    public ArrayList<Picture> getPictures() {
-        ArrayList<Picture> pictures = new ArrayList<>();
-        pictures.add(new Picture("https://i.imgur.com/eBF3WR7.jpg", "Federico", "2 días", "3 Me gusta"));
-        pictures.add(new Picture("https://i.imgur.com/nElY8xo.jpg", "Romualdo", "4 días", "10 Me gusta"));
-        pictures.add(new Picture("https://i.imgur.com/gNS5eeO.jpg", "Pascual", "1 días", "8 Me gusta"));
-        pictures.add(new Picture("https://i.imgur.com/v3El8IJ.jpg", "Maite", "5 días", "6 Me gusta"));
-        return pictures;
+        apiServiceI.getDestinos(id).enqueue(new Callback<List<Destino>>() {
+            @Override
+            public void onResponse(Call<List<Destino>> call, Response<List<Destino>> response) {
+                if (response.isSuccessful()) {
+                    // TODO Controlar que los datos de entrada no sean null o vacio
+                    List<Destino> l = response.body();
+
+                    AppData.setListadoDestinosPerfil(l);
+                    RecyclerView destinosRecycler = view.findViewById(R.id.pictureprofileRecycler);
+
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+                    linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+                    destinosRecycler.setLayoutManager(linearLayoutManager);
+
+                    DestinosAdapterRecyclerView destinosAdapterRecyclerView = new DestinosAdapterRecyclerView(getActivity(), l, R.layout.cardview_destino);
+                    destinosRecycler.setAdapter(destinosAdapterRecyclerView);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Destino>> call, Throwable t) {
+
+            }
+        });
     }
 }

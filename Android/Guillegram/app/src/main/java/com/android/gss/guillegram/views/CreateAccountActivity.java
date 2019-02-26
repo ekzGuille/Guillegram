@@ -74,6 +74,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                 !email.equals("") && !name.equals("") && !user.equals("") && !password.equals("") && !confirm_password.equals("")) {
 
             if (password.equals(confirm_password)) {
+                // TODO Controlar que los datos de entrada no sean null o vacio
                 Usuario u = new Usuario();
                 u.setCorreo(email);
                 u.setNombre(name);
