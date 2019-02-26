@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.android.gss.guillegram.R;
 import com.android.gss.guillegram.adapter.DestinosAdapterRecyclerView;
@@ -59,8 +60,7 @@ public class FavoritoFragment extends Fragment {
         apiServiceI.getUsuario(id).enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                if (response.isSuccessful()) {
-                    //TODO Controlar que los datos de entrada no sean null o vacio
+                if (response.isSuccessful() && response.body() != null) {
                     //Usuario usuario = response.body();
                     //List<Destino> l = usuario.getDestinosFav();
                     System.out.println(response.body().toString());
@@ -75,12 +75,14 @@ public class FavoritoFragment extends Fragment {
 //
 //                    DestinosAdapterRecyclerView destinosAdapterRecyclerView = new DestinosAdapterRecyclerView(getActivity(), l, R.layout.cardview_destino);
 //                    destinosRecycler.setAdapter(destinosAdapterRecyclerView);
+                } else {
+                    Toast.makeText(getActivity().getBaseContext(), "Error obteniendo favoritos", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Usuario> call, Throwable t) {
-
+                Toast.makeText(getActivity().getBaseContext(), "Error obteniendo favoritos", Toast.LENGTH_SHORT).show();
             }
         });
     }

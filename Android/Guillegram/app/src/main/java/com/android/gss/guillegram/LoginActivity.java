@@ -76,22 +76,23 @@ public class LoginActivity extends AppCompatActivity {
 
                 @Override
                 public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                    if (response.isSuccessful()) {
-                        //TODO Controlar que los datos de entrada no sean null o vacio
+                    if (response.isSuccessful() && response.body() != null) {
                         usuario = response.body();
                         AppData.setUsuario(usuario);
                         goContainerActivity();
+                    } else {
+                        Toast.makeText(getBaseContext(), "Usuario no encontrado", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<Usuario> call, Throwable t) {
                     usuario = null;
-                    Toast.makeText(getBaseContext(), "Usuario no encontrado",  Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "Usuario no encontrado", Toast.LENGTH_SHORT).show();
                     AppData.setUsuario(usuario);
                 }
             });
-        }else{
+        } else {
             Toast.makeText(this, "Rellena todos los campos, por favor", Toast.LENGTH_SHORT).show();
         }
     }

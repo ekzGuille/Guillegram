@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.android.gss.guillegram.R;
 import com.android.gss.guillegram.adapter.DestinosAdapterRecyclerView;
@@ -62,8 +63,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onResponse(Call<List<Destino>> call, Response<List<Destino>> response) {
-                if (response.isSuccessful()) {
-                    // TODO Controlar que los datos de entrada no sean null o vacio
+                if (response.isSuccessful() && response.body() != null) {
                     List<Destino> l = response.body();
 
                     AppData.setListadoDestinos(l);
@@ -76,12 +76,14 @@ public class HomeFragment extends Fragment {
 
                     DestinosAdapterRecyclerView destinosAdapterRecyclerView = new DestinosAdapterRecyclerView(getActivity(), l, R.layout.cardview_destino);
                     destinosRecycler.setAdapter(destinosAdapterRecyclerView);
+                } else {
+                    Toast.makeText(getActivity().getBaseContext(), "Error obteniendo imágenes", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<Destino>> call, Throwable t) {
-
+                Toast.makeText(getActivity().getBaseContext(), "Error obteniendo imágenes", Toast.LENGTH_SHORT).show();
             }
         });
     }
