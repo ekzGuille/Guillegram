@@ -1,17 +1,36 @@
 package com.android.gss.guillegram.model.api.beans;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.List;
 
 public class Destino implements Serializable {
 
+    @SerializedName("id")
+    @Expose
     private int id;
+    @SerializedName("nombre")
+    @Expose
     private String nombre;
+    @SerializedName("descripcion")
+    @Expose
     private String descripcion;
+    @SerializedName("imagen")
+    @Expose
     private String imagen;
+    @SerializedName("latitud")
+    @Expose
     private double latitud;
+    @SerializedName("longitud")
+    @Expose
     private double longitud;
+    @SerializedName("usuario")
+    @Expose
     private Usuario usuario;
+    @SerializedName("usuariosFav")
+    @Expose
     private List<Usuario> usuariosFav;
 
     public int getId() {

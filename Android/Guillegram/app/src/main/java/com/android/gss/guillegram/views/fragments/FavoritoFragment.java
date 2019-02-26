@@ -57,31 +57,31 @@ public class FavoritoFragment extends Fragment {
 
 
     private void getFavoritosUsuario(final View view, int id) {
-        apiServiceI.getUsuario(id).enqueue(new Callback<Usuario>() {
+        apiServiceI.getDestinosFavorito(id).enqueue(new Callback<List<Destino>>() {
             @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+            public void onResponse(Call<List<Destino>> call, Response<List<Destino>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    //Usuario usuario = response.body();
-                    //List<Destino> l = usuario.getDestinosFav();
-                    System.out.println(response.body().toString());
+                    List<Destino> l = response.body();
+                    AppData.setListadoDestinosFavoritos(l);
 
-//                    AppData.setListadoDestinosFavoritos(l);
-//                    RecyclerView destinosRecycler = view.findViewById(R.id.pictureFavRecycler);
-//
-//                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-//                    linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-//
-//                    destinosRecycler.setLayoutManager(linearLayoutManager);
-//
-//                    DestinosAdapterRecyclerView destinosAdapterRecyclerView = new DestinosAdapterRecyclerView(getActivity(), l, R.layout.cardview_destino);
-//                    destinosRecycler.setAdapter(destinosAdapterRecyclerView);
+                    AppData.setListadoDestinosFavoritos(l);
+                    RecyclerView destinosRecycler = view.findViewById(R.id.pictureFavRecycler);
+
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+                    linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+                    destinosRecycler.setLayoutManager(linearLayoutManager);
+
+                    DestinosAdapterRecyclerView destinosAdapterRecyclerView = new DestinosAdapterRecyclerView(getActivity(), l, R.layout.cardview_destino);
+                    destinosRecycler.setAdapter(destinosAdapterRecyclerView);
+
                 } else {
                     Toast.makeText(getActivity().getBaseContext(), "Error obteniendo favoritos", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
+            public void onFailure(Call<List<Destino>> call, Throwable t) {
                 Toast.makeText(getActivity().getBaseContext(), "Error obteniendo favoritos", Toast.LENGTH_SHORT).show();
             }
         });

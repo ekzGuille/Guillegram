@@ -1,5 +1,6 @@
 package guille.guillegram.api.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,37 @@ public class AppController {
 	 * USUARIOS
 	 */
 
+	@PostMapping(value = "u/a")
+	public @ResponseBody Usuario u(@RequestBody Usuario u) {
+		usr.save(u);
+		Optional<Usuario> found = usr.findById(u.getId());
+		return found.isPresent() ? found.get() : null;
+	}
+
+	@PostMapping(value = "u/d")
+	public @ResponseBody Usuario us(@RequestBody Usuario u) {
+		usr.delete(u);
+		Optional<Usuario> found = usr.findById(u.getId());
+		return found.isPresent() ? found.get() : null;
+	}
+
+	@PostMapping(value = "destinos/usuario/update/{idU}")
+	public @ResponseBody Usuario updateDestinos(@PathVariable("idU") int idU, @RequestBody Destino d) {
+		Usuario usuario = usr.findById(idU).get();
+		List<Destino> l = usuario.getDestinosFav();
+		l.add(d);
+		usuario.setDestinosFav(l);
+		usr.save(usuario);
+		return usuario;
+	}
+
+	@PostMapping(value = "destinos/usuario/delete/{idU}/{idD}")
+	public @ResponseBody Usuario deleteDestinos(@PathVariable("idU") int idU, @PathVariable("idD") int idD) {
+		//TODO
+//		des.deleteDestinoById(idU, idD);
+		return usr.findById(idU).get();
+	}
+
 	@GetMapping(value = "usuarios/list")
 	public @ResponseBody Iterable<Usuario> listUsr() {
 		return usr.findAll();
@@ -73,10 +105,6 @@ public class AppController {
 		return found.isPresent() ? found.get() : null;
 	}
 
-	@PutMapping
-	public void addFavorito(@RequestBody Usuario u, @RequestBody Destino d) {
-//		u.setDestinosFav(new HashSet<>()v);;
-	}
 
 	/*
 	 * DESTINOS
@@ -101,9 +129,14 @@ public class AppController {
 	public void updUDes(@RequestBody Destino d) {
 		des.save(d);
 	}
-	
-	@GetMapping(value="destinos/usuario/{id}")
-	public @ResponseBody Iterable<Destino> getDestinos(@PathVariable("id") int id) {
-		return des.findDestinosByIdUsuario(id);
+
+	@GetMapping(value = "destinos/usuario/favoritos/{id}")
+	public @ResponseBody Iterable<Destino> getDestinosFav(@PathVariable("id") int id) {
+		return des.findDestinosFavByIdUsuario(id);
+	}
+
+	@GetMapping(value = "destinos/usuario/publicados/{id}")
+	public @ResponseBody Iterable<Destino> getDestinosPub(@PathVariable("id") int id) {
+		return des.findDestinosPubByIdUsuario(id);
 	}
 }

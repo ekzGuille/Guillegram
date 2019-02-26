@@ -70,12 +70,11 @@ public class ProfileFragment extends Fragment {
 
     private void getFotosUsuario(final View view, int id) {
 
-        apiServiceI.getDestinos(id).enqueue(new Callback<List<Destino>>() {
+        apiServiceI.getDestinosPublicados(id).enqueue(new Callback<List<Destino>>() {
             @Override
             public void onResponse(Call<List<Destino>> call, Response<List<Destino>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     List<Destino> l = response.body();
-
                     AppData.setListadoDestinosPerfil(l);
                     RecyclerView destinosRecycler = view.findViewById(R.id.pictureprofileRecycler);
 

@@ -31,6 +31,10 @@ public interface ApiServiceI {
     @GET("usuarios/get/{id}")
     Call<Usuario> getUsuario(@Path("id") int id);
 
-    @GET("destinos/usuario/{id}")
-    Call<List<Destino>> getDestinos(@Path("id") int id);
+    @GET("destinos/usuario/favoritos/{id}")
+    Call<List<Destino>> getDestinosFavorito(@Path("id") int id);
+
+    @GET("destinos/usuario/publicados/{id}")
+    Call<List<Destino>> getDestinosPublicados(@Path("id") int id);
+
 }

@@ -1,16 +1,33 @@
 package com.android.gss.guillegram.model.api.beans;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.List;
 
 public class Usuario implements Serializable {
 
+    @SerializedName("id")
+    @Expose
     private int id;
+    @SerializedName("nombre")
+    @Expose
     private String nombre;
+    @SerializedName("correo")
+    @Expose
     private String correo;
+    @SerializedName("nombreUsuario")
+    @Expose
     private String nombreUsuario;
+    @SerializedName("contrasena")
+    @Expose
     private String contrasena;
+    @SerializedName("usuarios")
+    @Expose
     private List<Destino> usuarios;
+    @SerializedName("destinosFav")
+    @Expose
     private List<Destino> destinosFav;
 
 
