@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.gss.guillegram.model.api.beans.Usuario;
 import com.android.gss.guillegram.model.api.controllerI.ApiServiceI;
@@ -80,16 +81,18 @@ public class LoginActivity extends AppCompatActivity {
                         System.out.println(usuario.toString());
                         AppData.setUsuario(usuario);
                         goContainerActivity();
-
                     }
                 }
 
                 @Override
                 public void onFailure(Call<Usuario> call, Throwable t) {
                     usuario = null;
+                    Toast.makeText(getBaseContext(), "Usuario no encontrado",  Toast.LENGTH_SHORT).show();
                     AppData.setUsuario(usuario);
                 }
             });
+        }else{
+            Toast.makeText(this, "Rellena todos los campos, por favor", Toast.LENGTH_SHORT).show();
         }
     }
 }

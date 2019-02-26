@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.android.gss.guillegram.R;
+import com.android.gss.guillegram.views.fragments.FavoritoFragment;
 import com.android.gss.guillegram.views.fragments.HomeFragment;
 import com.android.gss.guillegram.views.fragments.ProfileFragment;
 import com.android.gss.guillegram.views.fragments.SearchFragment;
@@ -43,10 +44,10 @@ public class ContainerActivity extends AppCompatActivity {
                                 .addToBackStack(null).commit();
                         break;
 
-                    case R.id.search_tab:
+                    case R.id.fav_tab:
                         getSupportFragmentManager()
                                 .beginTransaction()
-                                .replace(R.id.fragment_container, new SearchFragment())
+                                .replace(R.id.fragment_container, new FavoritoFragment())
                                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                                 .addToBackStack(null).commit();
                         break;

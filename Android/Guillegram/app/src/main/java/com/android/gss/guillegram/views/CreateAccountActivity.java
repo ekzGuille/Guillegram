@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.android.gss.guillegram.R;
 import com.android.gss.guillegram.model.api.beans.Usuario;
@@ -49,15 +50,11 @@ public class CreateAccountActivity extends AppCompatActivity {
         joinUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Usuario usuario = register(email.getText().toString(),
+                register(email.getText().toString(),
                         name.getText().toString(),
                         user.getText().toString(),
                         password.getText().toString(),
                         confirm_Password.getText().toString());
-                if (usuario != null) {
-                    goContainerActivity(v);
-                }
             }
         });
 
@@ -71,38 +68,45 @@ public class CreateAccountActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(btnUp);
     }
 
-    private Usuario register(String email, String name, String user, String password, String confirm_password) {
+    private void register(String email, String name, String user, String password, String confirm_password) {
 
         if (email != null && name != null && user != null && password != null && confirm_password != null &&
-                !email.equals("") && !name.equals("") && !user.equals("") && !password.equals("") && !confirm_password.equals("")
-                && password.equals(confirm_password)) {
-            Usuario u = new Usuario();
-            u.setCorreo(email);
-            u.setNombre(name);
-            u.setNombreUsuario(user);
-            u.setContrasena(password);
-            apiServiceI.register(u).enqueue(new Callback<Usuario>() {
-                Usuario usuario;
+                !email.equals("") && !name.equals("") && !user.equals("") && !password.equals("") && !confirm_password.equals("")) {
 
-                @Override
-                public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                    if (response.isSuccessful() && response.body() != null) {
-                        usuario = response.body();
+            if (password.equals(confirm_password)) {
+                Usuario u = new Usuario();
+                u.setCorreo(email);
+                u.setNombre(name);
+                u.setNombreUsuario(user);
+                u.setContrasena(password);
+                apiServiceI.register(u).enqueue(new Callback<Usuario>() {
+                    Usuario usuario;
+
+                    @Override
+                    public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                        if (response.isSuccessful() && response.body() != null) {
+                            usuario = response.body();
+                            AppData.setUsuario(usuario);
+                            goContainerActivity();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Usuario> call, Throwable t) {
+                        usuario = null;
+                        Toast.makeText(getBaseContext(), "Ha habido un problema al registrarse", Toast.LENGTH_SHORT).show();
                         AppData.setUsuario(usuario);
                     }
-                }
-
-                @Override
-                public void onFailure(Call<Usuario> call, Throwable t) {
-                    usuario = null;
-                    AppData.setUsuario(usuario);
-                }
-            });
+                });
+            } else {
+                Toast.makeText(this, "Las contraseñas han de coincidir", Toast.LENGTH_LONG).show();
+            }
+        } else {
+            Toast.makeText(this, "Rellena todos los campos, por favor", Toast.LENGTH_LONG).show();
         }
-        return AppData.getUsuario();
     }
 
-    private void goContainerActivity(View view) {
+    private void goContainerActivity() {
         Intent intent = new Intent(this, ContainerActivity.class);
         startActivity(intent);
     }

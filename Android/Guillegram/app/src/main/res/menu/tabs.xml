@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/search_tab"
-        android:icon="@drawable/ic_search"
-        android:title="@string/tab_search"
+        android:id="@+id/fav_tab"
+        android:icon="@drawable/ic_star"
+        android:title="@string/tab_fav"
         android:color="@android:color/white"/>
     <item
         android:id="@+id/home_tab"
