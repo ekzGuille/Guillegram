@@ -17,7 +17,7 @@
 
 ## Destinos favoritos del usuario
 
-| id | idUsuario | idDestino |
-|----|-----------|-----------|
-| 1  | 1         | 1         |
-|    |           |           |
+| idUsuario | idDestino |
+|-----------|-----------|
+| 1         | 1         |
+|           |           |
