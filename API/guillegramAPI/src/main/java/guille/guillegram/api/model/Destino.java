@@ -51,7 +51,7 @@ public class Destino {
 	private Usuario usuario;
 
 	// Ignorar esta propiedad (para evitar bucle infinito)
-	@JsonIgnoreProperties("destinosFav")
+	@JsonIgnoreProperties(value="destinosFav",allowSetters = true)
 	@ManyToMany(mappedBy = "destinosFav")
 	private List<Usuario> usuariosFav;
 

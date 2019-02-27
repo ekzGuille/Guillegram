@@ -11,6 +11,7 @@ import android.transition.Explode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -49,7 +50,7 @@ public class DestinosAdapterRecyclerView extends RecyclerView.Adapter<DestinosAd
 
         pictureViewHolder.userNameCard.setText(destino.getUsuario().getNombre());
         pictureViewHolder.localizacionCard.setText(destino.getNombre());
-//        pictureViewHolder.likeNumberCard.setText(picture.getLikeNumber());
+        pictureViewHolder.likeNumberCard.setText(destino.getUsuariosFav().size() + " Me gusta");
 
         Glide.with(context).load(destino.getImagen()).centerCrop().into(pictureViewHolder.pictureCard);
 
@@ -85,7 +86,8 @@ public class DestinosAdapterRecyclerView extends RecyclerView.Adapter<DestinosAd
         private ImageView pictureCard;
         private TextView userNameCard;
         private TextView localizacionCard;
-//        private TextView likeNumberCard;
+        private CheckBox likeCheckCard;
+        private TextView likeNumberCard;
 
         public DestinoViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -93,7 +95,8 @@ public class DestinosAdapterRecyclerView extends RecyclerView.Adapter<DestinosAd
             pictureCard = itemView.findViewById(R.id.pictureCard);
             userNameCard = itemView.findViewById(R.id.userNameCard);
             localizacionCard = itemView.findViewById(R.id.localizacionFoto);
-//            likeNumberCard = itemView.findViewById(R.id.likeNumberCard);
+            likeCheckCard = itemView.findViewById(R.id.likeCheckCard);
+            likeNumberCard = itemView.findViewById(R.id.likeNumberCard);
         }
     }
 

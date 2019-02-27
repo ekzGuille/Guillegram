@@ -37,4 +37,7 @@ public interface ApiServiceI {
     @GET("destinos/usuario/publicados/{id}")
     Call<List<Destino>> getDestinosPublicados(@Path("id") int id);
 
+    @POST("destinos/usuario/favoritos/update/{idU}")
+    Call<Integer> updateFavoritosDestinos(@Path("idU") int id, @Body Destino destino);
+
 }

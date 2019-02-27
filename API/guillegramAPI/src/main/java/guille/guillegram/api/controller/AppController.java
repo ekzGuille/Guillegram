@@ -2,6 +2,7 @@ package guille.guillegram.api.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -40,33 +41,23 @@ public class AppController {
 	 * USUARIOS
 	 */
 
-	@PostMapping(value = "u/a")
-	public @ResponseBody Usuario u(@RequestBody Usuario u) {
-		usr.save(u);
-		Optional<Usuario> found = usr.findById(u.getId());
-		return found.isPresent() ? found.get() : null;
-	}
-
-	@PostMapping(value = "u/d")
-	public @ResponseBody Usuario us(@RequestBody Usuario u) {
-		usr.delete(u);
-		Optional<Usuario> found = usr.findById(u.getId());
-		return found.isPresent() ? found.get() : null;
-	}
-
-	@PostMapping(value = "destinos/usuario/update/{idU}")
-	public @ResponseBody Usuario updateDestinos(@PathVariable("idU") int idU, @RequestBody Destino d) {
-		Usuario usuario = usr.findById(idU).get();
-		List<Destino> l = usuario.getDestinosFav();
-		l.add(d);
-		usuario.setDestinosFav(l);
-		usr.save(usuario);
-		return usuario;
-	}
+//	@PostMapping(value = "u/a")
+//	public @ResponseBody Usuario u(@RequestBody Usuario u) {
+//		usr.save(u);
+//		Optional<Usuario> found = usr.findById(u.getId());
+//		return found.isPresent() ? found.get() : null;
+//	}
+//
+//	@PostMapping(value = "u/d")
+//	public @ResponseBody Usuario us(@RequestBody Usuario u) {
+//		usr.delete(u);
+//		Optional<Usuario> found = usr.findById(u.getId());
+//		return found.isPresent() ? found.get() : null;
+//	}
 
 	@PostMapping(value = "destinos/usuario/delete/{idU}/{idD}")
 	public @ResponseBody Usuario deleteDestinos(@PathVariable("idU") int idU, @PathVariable("idD") int idD) {
-		//TODO
+		// TODO
 //		des.deleteDestinoById(idU, idD);
 		return usr.findById(idU).get();
 	}
@@ -105,7 +96,6 @@ public class AppController {
 		return found.isPresent() ? found.get() : null;
 	}
 
-
 	/*
 	 * DESTINOS
 	 */
@@ -138,5 +128,25 @@ public class AppController {
 	@GetMapping(value = "destinos/usuario/publicados/{id}")
 	public @ResponseBody Iterable<Destino> getDestinosPub(@PathVariable("id") int id) {
 		return des.findDestinosPubByIdUsuario(id);
+	}
+
+	@PostMapping(value = "destinos/usuario/favoritos/update/{idU}")
+	public @ResponseBody Integer updateFavoritosDestinos(@PathVariable("idU") int idU, @RequestBody Destino d) {
+
+		Integer updelete = new Integer(0);
+		
+		Usuario usuario = usr.findById(idU).get();
+		Destino destino = des.findById(d.getId()).get();
+
+		List<Destino> l = usuario.getDestinosFav();
+		if (l.contains(destino)) {
+			updelete = -1;
+			usuario.getDestinosFav().remove(destino);
+		} else {
+			updelete = 1;
+			usuario.getDestinosFav().add(destino);
+		}
+		usr.save(usuario);
+		return updelete;
 	}
 }
