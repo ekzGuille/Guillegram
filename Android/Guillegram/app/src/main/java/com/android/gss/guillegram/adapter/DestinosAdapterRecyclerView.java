@@ -22,6 +22,8 @@ import com.android.gss.guillegram.util.AppData;
 import com.android.gss.guillegram.views.PictureDetailActivity;
 import com.bumptech.glide.Glide;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,8 +50,8 @@ public class DestinosAdapterRecyclerView extends RecyclerView.Adapter<DestinosAd
     public void onBindViewHolder(@NonNull DestinoViewHolder pictureViewHolder, final int i) {
         Destino destino = items.get(i);
 
+        pictureViewHolder.localizacionFoto.setText(destino.getNombre());
         pictureViewHolder.userNameCard.setText(destino.getUsuario().getNombre());
-        pictureViewHolder.localizacionCard.setText(destino.getNombre());
         pictureViewHolder.likeNumberCard.setText(destino.getUsuariosFav().size() + " Me gusta");
 
         Glide.with(context).load(destino.getImagen()).centerCrop().into(pictureViewHolder.pictureCard);
@@ -85,8 +87,7 @@ public class DestinosAdapterRecyclerView extends RecyclerView.Adapter<DestinosAd
 
         private ImageView pictureCard;
         private TextView userNameCard;
-        private TextView localizacionCard;
-        private CheckBox likeCheckCard;
+        private TextView localizacionFoto;
         private TextView likeNumberCard;
 
         public DestinoViewHolder(@NonNull View itemView) {
@@ -94,8 +95,7 @@ public class DestinosAdapterRecyclerView extends RecyclerView.Adapter<DestinosAd
 
             pictureCard = itemView.findViewById(R.id.pictureCard);
             userNameCard = itemView.findViewById(R.id.userNameCard);
-            localizacionCard = itemView.findViewById(R.id.localizacionFoto);
-            likeCheckCard = itemView.findViewById(R.id.likeCheckCard);
+            localizacionFoto = itemView.findViewById(R.id.localizacionFoto);
             likeNumberCard = itemView.findViewById(R.id.likeNumberCard);
         }
     }

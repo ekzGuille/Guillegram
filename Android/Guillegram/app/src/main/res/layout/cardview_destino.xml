@@ -4,8 +4,8 @@
     android:id="@+id/cardCardview"
     android:layout_width="match_parent"
     android:layout_height="@dimen/heigth_cardview"
-    cardview:cardCornerRadius="@dimen/corner_radius_cardview"
-    android:layout_marginBottom="@dimen/vertical_activity_margin">
+    android:layout_marginBottom="@dimen/vertical_activity_margin"
+    cardview:cardCornerRadius="@dimen/corner_radius_cardview">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:layout_height="@dimen/heigth_cardview"
             android:background="@drawable/foto"
             android:scaleType="centerCrop"
-            android:transitionName="@string/trasitionname_picture"/>
+            android:transitionName="@string/trasitionname_picture" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,20 +29,21 @@
             android:paddingBottom="@dimen/vertical_activity_margin">
 
             <TextView
-                android:id="@+id/userNameCard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/textsize_username_card"
-                android:text="@string/username_example"/>
-
-            <TextView
                 android:id="@+id/localizacionFoto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/username_example"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/textsize_username_card" />
+
+            <TextView
+                android:id="@+id/userNameCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/lugarEjemplo"
-                android:textSize="@dimen/localizacionCard"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/localizacionCard" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

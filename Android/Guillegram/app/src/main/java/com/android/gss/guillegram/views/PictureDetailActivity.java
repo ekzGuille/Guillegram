@@ -59,12 +59,20 @@ public class PictureDetailActivity extends AppCompatActivity {
             textcontent_image_detail.setText(destino.getDescripcion());
 
             fab = findViewById(R.id.fab);
+            usuario = AppData.getUsuario();
+            List<Usuario> ls = destino.getUsuariosFav();
+            for(Usuario u : ls){
+                if(u.getId() == usuario.getId()){
+                    fab.setImageResource(R.drawable.heart_full);
+                    break;
+                }
+                fab.setImageResource(R.drawable.heart_outline);
+            }
 
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (AppData.getUsuario() != null) {
-                        usuario = AppData.getUsuario();
                         cambiarFavorito(v, usuario, destino);
                     } else {
                         Toast.makeText(getBaseContext(), "Debes logearte para marcar favorito", Toast.LENGTH_SHORT).show();
@@ -100,11 +108,11 @@ public class PictureDetailActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     Integer l = response.body();
                     if (l.equals(-1)) {
-                        Toast.makeText(getBaseContext(), "Destino borrado", Toast.LENGTH_SHORT).show();
-                        fab.setBackgroundResource(R.drawable.heart_outline);
+                        Toast.makeText(getBaseContext(), "Destino borrado de favoritos", Toast.LENGTH_SHORT).show();
+                        fab.setImageResource(R.drawable.heart_outline);
                     } else {
-                        Toast.makeText(getBaseContext(), "Destino añadido", Toast.LENGTH_SHORT).show();
-                        fab.setBackgroundResource(R.drawable.heart_full);
+                        Toast.makeText(getBaseContext(), "Destino añadido a favoritos", Toast.LENGTH_SHORT).show();
+                        fab.setImageResource(R.drawable.heart_full);
                     }
                 }
             }
